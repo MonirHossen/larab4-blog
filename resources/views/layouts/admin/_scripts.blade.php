@@ -9,5 +9,6 @@
 <script src="{{asset('js/admin/template.js')}}"></script>
 <script src="{{asset('js/admin/todolist.js')}}"></script>
 <!-- endinject -->
+<script src="{{asset('js/admin/file-upload.js')}}"></script>
 <!-- Custom js for this page-->
 <script src="{{asset('js/admin/dashboard.js')}}"></script>
