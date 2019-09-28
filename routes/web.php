@@ -15,6 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('dashboard','DashboardController@dashboard')->name('admin.dashboard');
-Route::resource('post','PostController');
-Route::resource('user','UserController');
+Route::get('login','LoginController@index')->name('user.login');
+Route::post('login','LoginController@login')->name('login');
+Route::post('logout','LoginController@logout')->name('logout');
+
+Route::middleware('auth')->group(function (){
+    Route::get('dashboard','DashboardController@dashboard')->middleware('auth')->name('admin.dashboard');
+
+    Route::resource('post','PostController');
+    Route::resource('user','UserController');
+});
+
