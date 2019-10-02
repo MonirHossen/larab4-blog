@@ -29,29 +29,35 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>
-                                1
-                            </td>
-                            <td>
-                                Title
-                            </td>
-                            <td>
-                                Sports
-                            </td>
-                            <td>
-                               Published
-                            </td>
-                            <td>
-                                <a class="btn btn-primary btn-sm" href="{{route('post.show',1)}}">Details</a>
-                                <a class="btn btn-warning btn-sm" href="{{route('post.edit',1)}}">Edit</a>
-                                <form class="d-inline-block" action="{{route('post.destroy',1)}}" method="post">
-                                    @csrf
-                                    @method('delete')
-                                    <button class="btn btn-danger btn-sm" onclick="return confirm('Are You Sure Delete This Post?')">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
+                            @foreach($posts as $post)
+                                <tr>
+                                    <td>
+                                        {{$serial++}}
+                                    </td>
+                                    <td>
+                                        {{ $post->title }}
+                                    </td>
+                                    <td>
+                                        @foreach($categories as $category)
+                                            @if($category->id == $post->category_id)
+                                                {{ $category->name }}
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        {{ ucfirst($post->status ) }}
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-primary btn-sm" href="{{route('post.show',$post->id)}}">Details</a>
+                                        <a class="btn btn-warning btn-sm" href="{{route('post.edit',$post->id)}}">Edit</a>
+                                        <form class="d-inline-block" action="{{route('post.destroy',$post->id)}}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button class="btn btn-danger btn-sm" onclick="return confirm('Are You Sure Delete This Post?')">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
                         </tbody>
                     </table>
                 </div>

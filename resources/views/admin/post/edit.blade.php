@@ -7,23 +7,32 @@
             <div class="card-body">
                 <h4 class="card-title">Edit Post</h4>
 
-                <form class="forms-sample" action="{{route('post.update',1)}}" method="post">
+                <form class="forms-sample" action="{{route('post.update',$post->id)}}" method="post">
                     @csrf
                     @method('put')
                     <div class="form-group">
                         <label for="category_id">Category</label>
-                        <select class="form-control" id="category">
-                            <option value="sports">Sports</option>
-                            <option value="news" selected>News</option>
+                        <select name="category_id" class="form-control" id="category">
+                            @foreach($categories as $category)
+                                <option @if($category->id == $post->category_id) selected @endif value="{{$category->id}}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="author_id">Author</label>
+                        <select name="author_id" class="form-control" id="author">
+                            @foreach($authors as $author)
+                                <option @if($author->id == $post->author_id) selected @endif value="{{$author->id}}">{{ $author->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input type="text" class="form-control" id="title" placeholder="Title" value="Title">
+                        <input name="title" type="text" class="form-control" id="title" placeholder="Title" value="{{ $post->title }}">
                     </div>
                     <div class="form-group">
                         <label for="content">Content</label>
-                        <textarea name="content" placeholder="Content" class="form-control" id="content" rows="4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit, perspiciatis!</textarea>
+                        <textarea name="content" placeholder="Content" class="form-control" id="content" rows="4">{{ $post->content }}</textarea>
                     </div>
                     <div class="form-group">
                         <label>Image</label>
@@ -39,13 +48,13 @@
                         <label for="#">Status</label>
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="radio" checked class="form-check-input" name="optionsRadios" id="published" value="">
+                                <input @if($post->status == 'published') checked @endif type="radio"  class="form-check-input" name="status" id="published" value="published">
                                 Published
                             </label>
                         </div>
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionsRadios" id="unpublished" value="">
+                                <input @if($post->status == 'unpublished') checked @endif type="radio"  class="form-check-input" name="status" id="unpublished" value="unpublished">
                                 Unpublished
                             </label>
                         </div>

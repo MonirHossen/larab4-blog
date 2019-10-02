@@ -7,13 +7,25 @@
             <div class="col-12 grid-margin" id="doc-intro">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="mb-4 mt-4">Title</h3>
+                        <h3 class="mb-4 mt-4">{{ $post->title }}</h3>
                         <p class="card-subtitle">
-                            News, <b>Published</b>
-                            <br>
-                            22 Dec, 2019
+                            @foreach($authors as $author)
+                                @if($author->id == $post->author_id)
+                                    {{ $author->name }}
+                                @endif
+                            @endforeach
                         </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, harum, illo! Amet cum delectus, inventore natus non omnis voluptatem! Vitae.</p>
+                        <p class="card-subtitle">
+                             @foreach($categories as $category)
+                                 @if($category->id == $post->category_id)
+                                    {{ $category->name }}
+                                @endif
+                            @endforeach,
+                                 <b>{{ ucfirst($post->status) }}</b>
+                            <br>
+                           {{ $post->published_at }}
+                        </p>
+                        <p class="text-justify p-2">{{ $post->content }}</p>
                     <div class="text-right">
                         <a href="{{route('post.index')}}" class="btn btn-primary btn-sm">Back</a>
                     </div>

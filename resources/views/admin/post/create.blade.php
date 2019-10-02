@@ -11,14 +11,23 @@
                     @csrf
                     <div class="form-group">
                         <label for="category_id">Category</label>
-                        <select class="form-control" id="category">
-                            <option>Sports</option>
-                            <option>News</option>
+                        <select name="category_id" class="form-control" id="category">
+                            @foreach($categories as $category)
+                                <option value="{{$category->id}}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="author_id">Author</label>
+                        <select name="author_id" class="form-control" id="author">
+                            @foreach($authors as $author)
+                                <option value="{{$author->id}}">{{ $author->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input type="text" class="form-control" id="title" placeholder="Title">
+                        <input name="title" type="text" class="form-control" id="title" placeholder="Title">
                     </div>
                     <div class="form-group">
                         <label for="content">Content</label>
@@ -38,13 +47,13 @@
                         <label for="#">Status</label>
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionsRadios" id="published" value="">
+                                <input type="radio"  class="form-check-input" name="status" id="published" value="published">
                                 Published
                             </label>
                         </div>
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionsRadios" id="unpublished" value="">
+                                <input type="radio"  class="form-check-input" name="status" id="unpublished" value="unpublished">
                                 Unpublished
                             </label>
                         </div>
