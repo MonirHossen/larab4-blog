@@ -19,7 +19,33 @@
                 </ul>
             </div>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-category" aria-expanded="false" aria-controls="ui-basic">
+                <i class="ti-view-list-alt menu-icon"></i>
+                <span class="menu-title">Categories</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-category">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{route('category.create')}}">Create new category</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('category.index')}}">List of category</a></li>
+                </ul>
+            </div>
+        </li>
 
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-author" aria-expanded="false" aria-controls="ui-basic">
+                <i class="ti-user menu-icon"></i>
+                <span class="menu-title">Authors</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-author">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{route('author.create')}}">Create new author</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('author.index')}}">List of author</a></li>
+                </ul>
+            </div>
+        </li>
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-user" aria-expanded="false" aria-controls="ui-basic">
                 <i class="ti-user menu-icon"></i>
@@ -33,19 +59,7 @@
                 </ul>
             </div>
         </li>
-        <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#ui-category" aria-expanded="false" aria-controls="ui-basic">
-                        <i class="ti-view-list-alt menu-icon"></i>
-                        <span class="menu-title">Categories</span>
-                        <i class="menu-arrow"></i>
-                    </a>
-                    <div class="collapse" id="ui-category">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="{{route('category.create')}}">Create new category</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{{route('category.index')}}">List of category</a></li>
-                        </ul>
-                    </div>
-                </li>
+
 
     </ul>
 </nav>
