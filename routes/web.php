@@ -20,9 +20,11 @@ Route::post('login','LoginController@login')->name('login');
 Route::post('logout','LoginController@logout')->name('logout');
 
 Route::middleware('auth')->group(function (){
-    Route::get('dashboard','DashboardController@dashboard')->middleware('auth')->name('admin.dashboard');
 
+    Route::get('dashboard','DashboardController@dashboard')->middleware('auth')->name('admin.dashboard');
     Route::resource('post','PostController');
     Route::resource('user','UserController');
+    Route::resource('category','CategoryController');
+
 });
 

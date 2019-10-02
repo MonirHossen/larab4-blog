@@ -19,7 +19,7 @@ class LoginController extends Controller
         if (Auth::attempt(['email' => $request->email,'password' => $request->password])){
             return redirect()->route('admin.dashboard');
         }
-        session()->flash('warning','Email or Password not mismasted!!');
+        session()->flash('warning','Email or Password not matched!!');
         return redirect()->back()->withInput($request->all());
    }
    public function logout()
