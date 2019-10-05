@@ -38,7 +38,6 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name'          => 'required',
-            'description'   => 'required',
         ]);
         Category::create($request->except('_token'));
         session()->flash('success','Category Created Successfully!');
@@ -80,7 +79,6 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name'          => 'required',
-            'description'   => 'required',
         ]);
         $category->update($request->except('_token'));
         session()->flash('success','Category Updated Successfully!');

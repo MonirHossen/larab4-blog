@@ -9,18 +9,7 @@
                 <h4 class="card-title">Create New User</h4>
                 <form class="forms-sample" action="{{route('user.store')}}" method="post">
                     @csrf
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" class="form-control" id="email" placeholder="User Email">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" class="form-control" id="password" placeholder="User Password">
-                    </div>
+                   @include('admin.user._form')
                     <button type="submit" class="btn btn-primary mr-2">Save</button>
                     <button class="btn btn-light">Cancel</button>
                 </form>
