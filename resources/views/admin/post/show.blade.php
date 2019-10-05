@@ -8,6 +8,9 @@
                 <div class="card">
                     <div class="card-body">
                         <h3 class="mb-4 mt-4">{{ $post->title }}</h3>
+                        @if($post->image !=null)
+                            <img src="{{asset($post->image)}}"  width="100%" alt="">
+                        @endif
                         <p class="card-subtitle">
                             @foreach($authors as $author)
                                 @if($author->id == $post->author_id)
