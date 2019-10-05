@@ -12,26 +12,40 @@
                     <div class="form-group">
                         <label for="category_id">Category</label>
                         <select name="category_id" class="form-control" id="category">
+                            <option value="">Select Category</option>
                             @foreach($categories as $category)
-                                <option value="{{$category->id}}">{{ $category->name }}</option>
+                                <option @if(old('category_id') == $category->id) selected @endif value="{{$category->id}}">{{ $category->name }}</option>
                             @endforeach
                         </select>
+                        @error('category_id')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="author_id">Author</label>
                         <select name="author_id" class="form-control" id="author">
+                            <option value="">Select Author</option>
                             @foreach($authors as $author)
-                                <option value="{{$author->id}}">{{ $author->name }}</option>
+                                <option @if(old('author_id') == $author->id) selected @endif value="{{$author->id}}">{{ $author->name }}</option>
                             @endforeach
                         </select>
+                        @error('author_id')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input name="title" type="text" class="form-control" id="title" placeholder="Title">
+                        <input value="{{old('title')}}" name="title" type="text" class="form-control" id="title" placeholder="Title">
+                        @error('title')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="content">Content</label>
-                        <textarea name="content" placeholder="Content" class="form-control" id="content" rows="4"></textarea>
+                        <textarea name="content" placeholder="Content" class="form-control" id="content" rows="4">{{ old('content') }}</textarea>
+                        @error('content')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label>Image</label>
@@ -42,21 +56,27 @@
                                 <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
                             </span>
                         </div>
+                        @error('image')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="#">Status</label>
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="radio"  class="form-check-input" name="status" id="published" value="published">
+                                <input @if(old('status') == 'published') checked @endif type="radio"  class="form-check-input" name="status" id="published" value="published">
                                 Published
                             </label>
                         </div>
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="radio"  class="form-check-input" name="status" id="unpublished" value="unpublished">
+                                <input @if(old('status') == 'unpublished') selected @endif type="radio"  class="form-check-input" name="status" id="unpublished" value="unpublished">
                                 Unpublished
                             </label>
                         </div>
+                        @error('status')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <button type="submit" class="btn btn-primary mr-2">Save</button>

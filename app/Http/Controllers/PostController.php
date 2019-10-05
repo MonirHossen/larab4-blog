@@ -43,6 +43,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'category_id' => 'required',
+            'author_id' => 'required',
+            'title' => 'required',
+            'content' => 'required',
+            'status' => 'required',
+            'image' => 'mimes:jpg,png',
+        ]);
         if ($request->hasFile('image'))
         {
             $file   = $request->file('image');
