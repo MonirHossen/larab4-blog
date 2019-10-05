@@ -49,7 +49,7 @@ class PostController extends Controller
             'title' => 'required',
             'content' => 'required',
             'status' => 'required',
-            'image' => 'mimes:jpg,png',
+            'image' => 'mimes:jpeg,png',
         ]);
         if ($request->hasFile('image'))
         {
@@ -112,6 +112,15 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
 
     {
+        $request->validate([
+            'category_id' => 'required',
+            'author_id' => 'required',
+            'title' => 'required',
+            'content' => 'required',
+            'status' => 'required',
+            'image' => 'mimes:jpeg,png',
+        ]);
+
         if ($request->hasFile('image'))
         {
             $file   = $request->file('image');

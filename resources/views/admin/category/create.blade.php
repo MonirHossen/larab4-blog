@@ -9,14 +9,7 @@
                 <h4 class="card-title">Create new category</h4>
                 <form class="forms-sample" action="{{route('category.store')}}" method="post">
                     @csrf
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Category Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                        <textarea name="description" class="form-control" id="description" placeholder="Category Description"></textarea>
-                    </div>
+                   @include('admin.category._form')
                     <button type="submit" class="btn btn-primary mr-2">Save</button>
                     <button class="btn btn-light">Cancel</button>
                 </form>
