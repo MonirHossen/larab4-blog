@@ -41,7 +41,7 @@ class CategoryController extends Controller
         ]);
         Category::create($request->except('_token'));
         session()->flash('success','Category Created Successfully!');
-        return redirect()->route('category.index');
+        return redirect()->route('category.create');
 
     }
 
