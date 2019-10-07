@@ -43,6 +43,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'category_id' => 'required',
             'author_id' => 'required',
@@ -51,6 +52,7 @@ class PostController extends Controller
             'status' => 'required',
             'image' => 'mimes:jpeg,png',
         ]);
+
         if ($request->hasFile('image'))
         {
             $file   = $request->file('image');
@@ -64,7 +66,14 @@ class PostController extends Controller
         $data['author_id']   = $request->author_id;
         $data['title']       = $request->title;
         $data['content']     = $request->content;
+
+        if ($request->has('is_featured'))
+        {
+            $data['is_featured'] = $request->is_featured;
+        }
+
         $data['status']      = $request->status;
+
         if ($request->status == 'published')
         {
             $data['published_at'] = date('y-m-d');

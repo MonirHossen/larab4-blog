@@ -36,6 +36,20 @@
     <div class="text-danger">{{ $message }}</div>
     @enderror
 </div>
+
+<div class="form-group">
+    <label for="#">Featured</label>
+    <div class="form-check">
+        <label class="form-check-label">
+            <input @if(old('is_featured') == 1) checked @endif type="checkbox"  class="form-check-input" name="is_featured" id="is_featured" value="1">
+            Yes
+        </label>
+    </div>
+    @error('is_featured')
+    <div class="text-danger">{{ $message }}</div>
+    @enderror
+</div>
+
 <div class="form-group">
     <label>Image</label>
     <input type="file" name="image" class="file-upload-default">
