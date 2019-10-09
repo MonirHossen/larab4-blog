@@ -12,3 +12,10 @@
 <script src="{{asset('js/admin/file-upload.js')}}"></script>
 <!-- Custom js for this page-->
 <script src="{{asset('js/admin/dashboard.js')}}"></script>
+
+<!-- cke-editor-javascript -->
+<script src="{{asset('js/admin/ckeditor/ckeditor.js')}}"></script>
+<script src="{{asset('js/admin/ckeditor/samples/js/sample.js')}}"></script>
+<script>
+    initSample();
+</script>
