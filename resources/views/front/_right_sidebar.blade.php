@@ -23,7 +23,7 @@
     <h3 class="heading">Categories</h3>
     <ul class="categories">
         @foreach($categories as $category)
-            <li><a href="#">{{ $category->name }} <span>(12)</span></a></li>
+            <li><a href="#">{{ $category->name }} <span>({{ $category->post->count() }})</span></a></li>
         @endforeach
     </ul>
 </div>
