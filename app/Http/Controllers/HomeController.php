@@ -16,8 +16,15 @@ class HomeController extends Controller
         $data['categories']      = Category::all();
         return view('front.index',$data);
     }
-    public function details()
+    public function details($id)
     {
-        return view('front.details');
+        $data['popular_posts']   = Post::published()->orderBY('total_hit','desc')->limit(3)->get();
+        $data['categories']      = Category::all();
+        $post                    = Post::with(['category','author'])->findOrFail($id);
+        $post->increment('total_hit');
+        $data['post']  = $post;
+        $data['related_posts']  = Post::published()->orderBY('id','desc')->where('category_id',$post->category_id)->limit(3)->get();
+
+        return view('front.details',$data);
     }
 }
