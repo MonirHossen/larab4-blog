@@ -46,15 +46,15 @@
             <div class="row blog-entries">
                 <div class="col-md-12 col-lg-8 main-content">
                     <div class="row">
-                       @foreach($posts as $post)
+                       @foreach($latest_posts as $post)
                             <div class="col-md-6">
                                 <a href="blog-single.html" class="blog-entry element-animate" data-animate-effect="fadeIn">
                                     <img src="{{$post->image}}" width="100%" alt="Image placeholder">
                                     <div class="blog-content-body">
                                         <div class="post-meta">
-                                            <span class="author mr-2"><img src="{{$post->image}}" alt="Colorlib"> {{ $post->author->name }}</span>&bullet;
+                                            <span class="author mr-2">{{ $post->author->name }}</span>&bullet;
                                             <span class="mr-2">{{ date('M d, Y',strtotime($post->published_at)) }} </span> &bullet;
-                                            <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
+                                            <span class="ml-2"><span class="fa fa-comments"></span> {{ $post->category->name }}</span>
                                         </div>
                                         <h2>{{ $post->title }}</h2>
                                     </div>
@@ -65,17 +65,7 @@
 
                     <div class="row mt-5">
                         <div class="col-md-12 text-center">
-                            <nav aria-label="Page navigation" class="text-center">
-                                <ul class="pagination">
-                                    <li class="page-item  active"><a class="page-link" href="#">&lt;</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">&gt;</a></li>
-                                </ul>
-                            </nav>
+                           {{ $latest_posts->render() }}
                         </div>
                     </div>
 

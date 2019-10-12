@@ -17,7 +17,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $data['posts'] = Post::all();
+        $data['posts'] = Post::orderBy('id','desc')->paginate(8);
         $data['categories']  = Category::orderBy('name')->get();
         $data['serial'] = 1;
         return view('admin.post.index',$data);
@@ -80,7 +80,7 @@ class PostController extends Controller
         }
         Post::create($data);
         session()->flash('success','Post Created Successfully');
-        return redirect()->route('post.index');
+        return redirect()->route('post.create');
     }
 
     /**
@@ -148,6 +148,10 @@ class PostController extends Controller
         $data['author_id']   = $request->author_id;
         $data['title']       = $request->title;
         $data['content']     = $request->content;
+        if ($request->has('is_featured'))
+        {
+            $data['is_featured'] = $request->is_featured;
+        }
         $data['status']      = $request->status;
 
         $post->update($data);

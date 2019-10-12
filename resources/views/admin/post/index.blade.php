@@ -21,6 +21,9 @@
                                 Category
                             </th>
                             <th>
+                                Featured
+                            </th>
+                            <th>
                                 Status
                             </th>
                             <th>
@@ -45,21 +48,27 @@
                                         @endforeach
                                     </td>
                                     <td>
+                                        @if($post->is_featured)
+                                         <i class="ti-check text-success"></i>Yes
+                                        @endif
+                                    </td>
+                                    <td>
                                         {{ ucfirst($post->status ) }}
                                     </td>
                                     <td>
-                                        <a class="btn btn-primary btn-sm" href="{{route('post.show',$post->id)}}">Details</a>
-                                        <a class="btn btn-warning btn-sm" href="{{route('post.edit',$post->id)}}">Edit</a>
+                                        <a class="btn btn-primary btn-sm" href="{{route('post.show',$post->id)}}"><i class="ti-eye"></i></a>
+                                        <a class="btn btn-warning btn-sm" href="{{route('post.edit',$post->id)}}"><i class="ti-pencil-alt"></i></a>
                                         <form class="d-inline-block" action="{{route('post.destroy',$post->id)}}" method="post">
                                             @csrf
                                             @method('delete')
-                                            <button class="btn btn-danger btn-sm" onclick="return confirm('Are You Sure Delete This Post?')">Delete</button>
+                                            <button class="btn btn-danger btn-sm" onclick="return confirm('Are You Sure Delete This Post?')"><i class="ti-trash"></i></button>
                                         </form>
                                     </td>
                                 </tr>
                                 @endforeach
                         </tbody>
                     </table>
+                    {{ $posts->render() }}
                 </div>
             </div>
         </div>
