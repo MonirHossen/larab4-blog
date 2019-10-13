@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\About;
 use App\Category;
 use App\Post;
 use Illuminate\Http\Request;
@@ -26,5 +27,14 @@ class HomeController extends Controller
         $data['related_posts']   = Post::published()->orderBY('id','desc')->where('category_id',$post->category_id)->limit(3)->get();
 
         return view('front.details',$data);
+    }
+
+    public function aboutUs()
+    {
+        $data['popular_posts']   = Post::published()->orderBY('total_hit','desc')->limit(3)->get();
+        $data['latest_posts']    = Post::with(['category','author'])->published()->orderBY('id','desc')->paginate(6);
+        $data['categories']      = Category::all();
+        $data['abouts']           = About::all();
+        return view('front.about',$data);
     }
 }

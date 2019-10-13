@@ -33,6 +33,21 @@
             </div>
         </li>
 
+
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-about" aria-expanded="false" aria-controls="ui-basic">
+                <i class="ti-view-list-alt menu-icon"></i>
+                <span class="menu-title">About Us</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-about">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{route('about.create')}}">Create About Page</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('about.index')}}">List of About Content</a></li>
+                </ul>
+            </div>
+        </li>
+
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-author" aria-expanded="false" aria-controls="ui-basic">
                 <i class="ti-user menu-icon"></i>

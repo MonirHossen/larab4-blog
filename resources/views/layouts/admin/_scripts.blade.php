@@ -14,8 +14,8 @@
 <script src="{{asset('js/admin/dashboard.js')}}"></script>
 
 <!-- cke-editor-javascript -->
-<script src="{{asset('js/admin/ckeditor/ckeditor.js')}}"></script>
-<script src="{{asset('js/admin/ckeditor/samples/js/sample.js')}}"></script>
-<script>
-    initSample();
-</script>
+{{--<script src="{{asset('js/admin/ckeditor.js')}}"></script>--}}
+{{--<script src="{{asset('js/admin/sample.js')}}"></script>--}}
+{{--<script>--}}
+{{--    initSample();--}}
+{{--</script>--}}

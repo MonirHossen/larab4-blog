@@ -59,6 +59,7 @@
                                 <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
                             </span>
     </div>
+    @if(old('image',isset($post->image)?$post->image:null)) <img src="{{ asset($post->image) }}" width="30%" alt="">@endif
     @error('image')
     <div class="text-danger">{{ $message }}</div>
     @enderror

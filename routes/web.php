@@ -10,13 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*Home page related route Start */
 Route::get('/','HomeController@index')->name('home');
 Route::get('post/{id}/details','HomeController@details')->name('post.details');
+Route::get('about_us','HomeController@aboutUs')->name('about_us');
+/*Home page related route End */
 
+/*Main Admin/User Related Route Start */
 Route::get('login','LoginController@index')->name('user.login');
 Route::post('login','LoginController@login')->name('login');
 Route::post('logout','LoginController@logout')->name('logout');
+/*Main Admin/User Related Route End */
 
 Route::middleware('auth')->group(function (){
 
@@ -25,6 +29,7 @@ Route::middleware('auth')->group(function (){
     Route::resource('user','UserController');
     Route::resource('category','CategoryController');
     Route::resource('author','AuthorController');
+    Route::resource('about','AboutController');
 
 });
 
