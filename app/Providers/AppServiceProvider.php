@@ -28,8 +28,9 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength('191');
 
-//        View::composer('layouts.front._navbar',function (View $view) {
-//           $view->with('categories',Category::all());
-//        });
+        View::composer('layouts.front._navbar',function($view){
+            $view->with('categories',Category::all());
+        });
+
     }
 }

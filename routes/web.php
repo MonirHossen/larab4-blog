@@ -14,6 +14,10 @@
 Route::get('/','HomeController@index')->name('home');
 Route::get('post/{id}/details','HomeController@details')->name('post.details');
 Route::get('about_us','HomeController@aboutUs')->name('about_us');
+
+Route::get('contact_us','HomeController@contactUs')->name('contact_us');
+Route::post('contact/message','HomeController@contactMessageSend')->name('admin.message');
+Route::get('contact/message','HomeController@messageRead')->name('admin.message.index');
 /*Home page related route End */
 
 /*Main Admin/User Related Route Start */

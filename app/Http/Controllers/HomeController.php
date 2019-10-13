@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\About;
 use App\Category;
+use App\Contact;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -34,7 +35,32 @@ class HomeController extends Controller
         $data['popular_posts']   = Post::published()->orderBY('total_hit','desc')->limit(3)->get();
         $data['latest_posts']    = Post::with(['category','author'])->published()->orderBY('id','desc')->paginate(6);
         $data['categories']      = Category::all();
-        $data['abouts']           = About::all();
+        $data['abouts']          = About::all();
+
         return view('front.about',$data);
+    }
+
+    public function contactUs()
+    {
+        $data['categories']      = Category::all();
+        $data['popular_posts']   = Post::published()->orderBY('total_hit','desc')->limit(3)->get();
+       return view('front.contact',$data);
+    }
+    public function contactMessageSend(Request $request)
+    {
+        $request->validate([
+            'name'           => 'required',
+            'phone'          => 'required',
+            'email'          => 'required|unique:contacts',
+            'message'        => 'required'
+        ]);
+      Contact::create($request->except('_token'));
+      session()->flash('success','Message Send Successfully!');
+      return redirect()->route('contact_us');
+    }
+    public function messageRead()
+    {
+        $data['messages']   = Contact::all();
+        return view('admin.contact.index',$data);
     }
 }
