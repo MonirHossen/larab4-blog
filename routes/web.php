@@ -14,6 +14,7 @@
 Route::get('/','HomeController@index')->name('home');
 Route::get('post/{id}/details','HomeController@details')->name('post.details');
 Route::get('about_us','HomeController@aboutUs')->name('about_us');
+Route::get('category/{id}/post','HomeController@category')->name('category');
 
 Route::get('contact_us','HomeController@contactUs')->name('contact_us');
 Route::post('contact/message','HomeController@contactMessageSend')->name('admin.message');

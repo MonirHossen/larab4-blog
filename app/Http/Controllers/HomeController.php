@@ -14,14 +14,14 @@ class HomeController extends Controller
     {
         $data['featured_posts']  = Post::with(['category','author'])->published()->where('is_featured',1)->orderBY('id','desc')->get();
         $data['latest_posts']    = Post::with(['category','author'])->published()->orderBY('id','desc')->paginate(8);
-        $data['popular_posts']   = Post::published()->orderBY('total_hit','desc')->limit(3)->get();
-        $data['categories']      = Category:: all();
+//        $data['popular_posts']   = Post::published()->orderBY('total_hit','desc')->limit(3)->get();
+//        $data['categories']      = Category:: all();
         return view('front.index',$data);
     }
     public function details($id)
     {
-        $data['popular_posts']   = Post::published()->orderBY('total_hit','desc')->limit(3)->get();
-        $data['categories']      = Category::all();
+//        $data['popular_posts']   = Post::published()->orderBY('total_hit','desc')->limit(3)->get();
+//        $data['categories']      = Category::all();
         $post                    = Post::with(['category','author'])->findOrFail($id);
         $post->increment('total_hit');
         $data['post']            = $post;
@@ -32,18 +32,26 @@ class HomeController extends Controller
 
     public function aboutUs()
     {
-        $data['popular_posts']   = Post::published()->orderBY('total_hit','desc')->limit(3)->get();
+//        $data['popular_posts']   = Post::published()->orderBY('total_hit','desc')->limit(3)->get();
         $data['latest_posts']    = Post::with(['category','author'])->published()->orderBY('id','desc')->paginate(6);
-        $data['categories']      = Category::all();
+//        $data['categories']      = Category::all();
         $data['abouts']          = About::all();
 
         return view('front.about',$data);
     }
 
+    public function category($id)
+    {
+        $data['posts']           = Post::where('category_id',$id)->published()->orderBy('id','desc')->paginate(8);
+//        $data['popular_posts']   = Post::published()->orderBY('total_hit','desc')->limit(3)->get();
+//        $data['categories']      = Category::all();
+        return view('front.category_posts',$data);
+    }
+
     public function contactUs()
     {
-        $data['categories']      = Category::all();
-        $data['popular_posts']   = Post::published()->orderBY('total_hit','desc')->limit(3)->get();
+//        $data['categories']      = Category::all();
+//        $data['popular_posts']   = Post::published()->orderBY('total_hit','desc')->limit(3)->get();
        return view('front.contact',$data);
     }
     public function contactMessageSend(Request $request)

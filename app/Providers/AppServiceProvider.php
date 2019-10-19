@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Category;
+use App\Post;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -28,9 +29,16 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength('191');
 
-        View::composer('layouts.front._navbar',function($view){
-            $view->with('categories',Category::all());
+        view()->composer('front._right_sidebar',function ($view){
+            $data['categories'] = Category::all();
+            $data['popular_posts']   = Post::published()->orderBY('total_hit','desc')->limit(3)->get();
+            $view->with($data);
         });
+        view()->composer('layouts.front._navbar',function ($view){
+            $data['categories'] = Category::all();
+            $view->with($data);
+        });
+
 
     }
 }
