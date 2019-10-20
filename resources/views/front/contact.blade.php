@@ -7,7 +7,7 @@
             <div class="row mb-4">
                 <div class="col-md-6">
                     @include('layouts.admin._alert')
-                    <h1>Contact Me</h1>
+                    <h1>Contact Us</h1>
                 </div>
             </div>
             <div class="row blog-entries">

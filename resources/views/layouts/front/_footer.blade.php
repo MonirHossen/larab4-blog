@@ -1,59 +1,40 @@
 
     <div class="container">
         <div class="row mb-5">
-            <div class="col-md-4">
-                <h3>About Us</h3>
-                <p class="mb-4">
-                    <img src="images/img_1.jpg" alt="Image placeholder" class="img-fluid">
-                </p>
+            @foreach($abouts as $about)
+                <div class="col-md-4">
+                    <h3>About Us</h3>
+                    <p class="mb-4">
+                        <img src="{{ asset($about->image) }}" alt="Image placeholder" class="img-fluid">
+                    </p>
 
-                <p>Lorem ipsum dolor sit amet sa ksal sk sa, consectetur adipisicing elit. Ipsa harum inventore reiciendis. <a href="#">Read More</a></p>
-            </div>
+                    <p>{!!  \Illuminate\Support\Str::limit($about->content,100)  !!}<a href="{{ route('about_us') }}">Read More</a></p>
+                </div>
+                @endforeach
             <div class="col-md-6 ml-auto">
                 <div class="row">
-                    <div class="col-md-7">
-                        <h3>Latest Post</h3>
-                        <div class="post-entry-sidebar">
-                            <ul>
-                                <li>
-                                    <a href="">
-                                        <img src="images/img_6.jpg" alt="Image placeholder" class="mr-4">
-                                        <div class="text">
-                                            <h4>How to Find the Video Games of Your Youth</h4>
-                                            <div class="post-meta">
-                                                <span class="mr-2">March 15, 2018 </span> &bullet;
-                                                <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
+                        <div class="col-md-7">
+                            <h3>Latest Post</h3>
+                            <div class="post-entry-sidebar">
+                                <ul>
+                                    @foreach($latest_posts as $post)
+                                    <li>
+                                        <a href="">
+                                            <img src="{{ asset($post->image) }}" alt="Image placeholder" class="mr-4">
+                                            <div class="text">
+                                                <h4>{{ $post->title }}</h4>
+                                                <div class="post-meta">
+                                                    <span class="mr-2">{{ date('M d, Y',strtotime($post->published_at)) }}</span> &bullet;
+                                                    <span class="ml-2"><span class="fa fa-comment"></span> {{ $post->author->name }}</span>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <img src="images/img_3.jpg" alt="Image placeholder" class="mr-4">
-                                        <div class="text">
-                                            <h4>How to Find the Video Games of Your Youth</h4>
-                                            <div class="post-meta">
-                                                <span class="mr-2">March 15, 2018 </span> &bullet;
-                                                <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <img src="images/img_4.jpg" alt="Image placeholder" class="mr-4">
-                                        <div class="text">
-                                            <h4>How to Find the Video Games of Your Youth</h4>
-                                            <div class="post-meta">
-                                                <span class="mr-2">March 15, 2018 </span> &bullet;
-                                                <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
+                                        </a>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
-                    </div>
+
                     <div class="col-md-1"></div>
 
                     <div class="col-md-4">
@@ -88,7 +69,7 @@
             <div class="col-md-12 text-center">
                 <p class="small">
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright &copy; <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All Rights Reserved | This template is made with <i class="fa fa-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+                    Copyright &copy; <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All Rights Reserved | This blog is made <i class="fa fa-heart text-danger" aria-hidden="true"></i> by <a href="{{ route('about_us') }}" target="_blank" >Monir Hossen</a>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </p>
             </div>

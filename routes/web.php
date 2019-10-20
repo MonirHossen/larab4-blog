@@ -19,6 +19,9 @@ Route::get('category/{id}/post','HomeController@category')->name('category');
 Route::get('contact_us','HomeController@contactUs')->name('contact_us');
 Route::post('contact/message','HomeController@contactMessageSend')->name('admin.message');
 Route::get('contact/message','HomeController@messageRead')->name('admin.message.index');
+
+//Route::get('footer','HomeController@footer')->name('footer');
+
 /*Home page related route End */
 
 /*Main Admin/User Related Route Start */

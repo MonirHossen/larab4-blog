@@ -41,7 +41,7 @@
     <label for="#">Featured</label>
     <div class="form-check">
         <label class="form-check-label">
-            <input @if(old('is_featured',isset($post->is_featured) ? $post->is_featured : null ) == 1) checked @endif type="checkbox"  class="form-check-input" name="is_featured" id="is_featured" value="1">
+            <input @if(old('is_featured',isset($post) ? $post->is_featured : null ) == 1) checked @endif type="checkbox"  class="form-check-input" name="is_featured" id="is_featured" value="1">
             Yes
         </label>
     </div>
@@ -59,7 +59,7 @@
                                 <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
                             </span>
     </div>
-    @if(old('image',isset($post->image)?$post->image:null)) <img src="{{ asset($post->image) }}" width="30%" alt="">@endif
+    @if(old('image',isset($post)?$post->image:null)) <img src="{{ asset($post->image) }}" width="30%" alt="">@endif
     @error('image')
     <div class="text-danger">{{ $message }}</div>
     @enderror

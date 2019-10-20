@@ -52,7 +52,7 @@ class HomeController extends Controller
     {
 //        $data['categories']      = Category::all();
 //        $data['popular_posts']   = Post::published()->orderBY('total_hit','desc')->limit(3)->get();
-       return view('front.contact',$data);
+       return view('front.contact');
     }
     public function contactMessageSend(Request $request)
     {
@@ -71,4 +71,15 @@ class HomeController extends Controller
         $data['messages']   = Contact::all();
         return view('admin.contact.index',$data);
     }
+
+//    public function footer()
+//    {
+//        //        $data['popular_posts']   = Post::published()->orderBY('total_hit','desc')->limit(3)->get();
+//        $data['latest_posts']    = Post::with(['category','author'])->published()->orderBY('id','desc')->paginate(6);
+////        $data['categories']      = Category::all();
+//        $data['abouts']          = About::all();
+//
+//        return view('layouts.front._footer',$data);
+//    }
+
 }
